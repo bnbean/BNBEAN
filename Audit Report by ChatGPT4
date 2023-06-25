@@ -1,0 +1,30 @@
+BNBEAN Contract Audit By None other than ChatGPT4 
+
+
+The provided code is an implementation of an ERC-20 token contract called `BNBEAN`. Here's a breakdown of the contract's main features:
+
+1. The contract implements the ERC-20 interface by including the `IERC20` interface and providing implementations for its functions.
+
+2. The contract also includes the `Context` and `Ownable` contracts, which provide context information and ownership functionality, respectively.
+
+3. The contract uses the `SafeMath` library for safe mathematical operations to prevent overflows and underflows.
+
+4. It defines several mappings and variables to track balances, allowances, and excluded accounts. The `_rOwned` mapping keeps track of the reflected token balances of accounts, while the `_tOwned` mapping stores the actual token balances of excluded accounts. The `_allowances` mapping keeps track of the approved transfer allowances between accounts. The `_isExcluded` mapping is used to determine if an account is excluded from reflection calculations. The `_excluded` array stores a list of excluded accounts.
+
+5. The contract sets the total supply of the token to 21,000,000,000 with 9 decimal places. The actual supply is stored in `_tTotal`, while the reflected total supply is stored in `_rTotal`.
+
+6. The contract's constructor initializes the contract by allocating the total supply to the contract deployer (`_msgSender()`). It emits a `Transfer` event to reflect the initial transfer from the zero address to the deployer.
+
+7. Various getter functions (`name()`, `symbol()`, `decimals()`, `totalSupply()`, `balanceOf()`, `allowance()`) are implemented to comply with the ERC-20 standard and provide information about the token.
+
+8. The `transfer()`, `approve()`, `transferFrom()`, `increaseAllowance()`, and `decreaseAllowance()` functions are implemented to handle token transfers and allowances.
+
+9. The contract allows for address exclusion, which means excluding an address from receiving reflected tokens. The `excludeAccount()` function is used to exclude an account, and the `includeAccount()` function is used to include an account.
+
+10. The contract includes several internal functions (`_approve()`, `_transfer()`, `_transferStandard()`, `_transferToExcluded()`, `_transferFromExcluded()`, `_transferBothExcluded()`, `_reflectFee()`, `_getValues()`, `_getTValues()`, `_getRValues()`, `_getRate()`, `_getCurrentSupply()`) that handle the transfer logic, fee calculation, and reflection calculations.
+
+11. The contract implements the `reflect()` function, which allows accounts (excluding accounts) to convert a specified amount of tokens into reflected tokens.
+
+12. The contract provides functions (`reflectionFromToken()`, `tokenFromReflection()`) to convert between reflected tokens and actual tokens.
+
+Overall, the `BNBEAN` contract is a standard implementation of an ERC-20 token with some additional features like address exclusion and reflection mechanism.
